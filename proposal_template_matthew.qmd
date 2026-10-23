@@ -1,0 +1,165 @@
+---
+title: "Replace with a specific project title"
+subtitle: "STAT 330 Portfolio Project Proposal"
+author: "Replace with all group members' names"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-summary: "Show code"
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+::: {.callout-tip}
+This proposal is separate from the final case study and does not count toward its word range. Keep the required headings, but add, remove, or move code chunks and output as needed. Delete this note and all bold prompts before submitting.
+:::
+
+**Group members:** Emma Messenger, Matthew Davis, Salinda Tanner
+
+## Question and audience
+
+**State one focused regression question. Identify the intended audience, explain why the answer matters, and name the response and important candidate predictors.**
+
+**Question:**
+
+How can we predict an employees Days Away from their job based on an injury? 
+
+**Audience:**
+
+This is important to insurance companies and employers because if we can know how many days an employee is out the employer knows how much insurance to get, and an insurer can know how much to charge (based on Days Away). 
+
+## Data
+
+**Provide a working source link or citation. Describe the observational unit, dimensions, response, candidate predictors, collection process if known, and evidence that the data can answer your question. Address permission to share or retrieve the data and any privacy, representation, measurement, or ethical concern.**
+
+```{r}
+# Load packages and read the data with a relative path or reproducible step.
+# Show only a compact check of dimensions and variables.
+library(tidyverse)
+
+filtered_path <- "ITA_Case_Data_Filter.csv"
+full_path <- "ITA_Case_Detail_Data_2025_through_08-31-2026.csv"
+
+if (file.exists(full_path)) {
+  # Load original dataset
+  data <- read.csv(full_path)
+
+  # Filter rows and select columns
+  data <- data[
+      (is.na(data$date_of_death) | data$date_of_death == "") &
+      data$incident_outcome != 1 &
+      data$dafw_num_away >= 0 &
+      data$djtr_num_tr >= 0,
+    c(
+      "establishment_ID",
+      "state",
+      "establishment_type",
+      "Size",
+      "total_hours_worked",
+      "incident_outcome",
+      "dafw_num_away",
+      "djtr_num_tr",
+      "type_of_incident",
+      "incident_outcome"
+    )
+  ]
+
+  # Randomly sample 60% of rows
+  set.seed(123)
+
+  data <- data[
+    sample(nrow(data), size = floor(nrow(data) * 0.60)),
+  ]
+
+  # Save filtered dataset
+  write.csv(data, filtered_path, row.names = FALSE)
+
+} else {
+  # Load previously filtered data
+  data <- read.csv(filtered_path)
+}
+
+glimpse(data)
+
+```
+
+Data Source: 
+
+> Occupational Safety and Health Administration. (2026). 2025 case detail summary data [Data set]. U.S. Department of Labor. https://www.osha.gov/sites/default/largefiles/ITA_Case_Detail_Data_2025_through_08-31-2026.csv
+
+The observational unit is a single company incident. The dimensions of the this data are 509,598 rows and 9 columns. 
+The original dataset had more rows and columns but we filtered it to fit it on Github, and some columns were unnecessary. We also filtered out an negative data because that is an input error (your number of days away, hours worked, etc. should not be less than 0). 
+
+There are two potential response variables. Either the number of days away from work due to an injury `dafw_num_away` or the number of days transfered or restricted from work `djtr_num_away`. 
+
+The candidate predictors are: 
+- State (state where the company is located) 
+- Establishment Type (State Government, Local Government, or Private)
+- Size (Categorical) 
+- Average Number of Employees (Numeric) 
+- Total Hours Worked (Total number of hours worked in company) 
+
+I believe this data can answer our question under the assumption that they are correlated. 
+
+This is public data supplied by the Government. Our biggest ethical concern is how we display the company names, 
+we would not want to poorly represent a company based on their injury reports. 
+
+## One useful first look
+
+```{r}
+# Create one figure that directly informs your research question.
+# Include a useful title, labels, units, and accessible colors.
+library(ggplot2)
+library(viridis)
+
+ggplot(
+  data,
+  aes(
+    x = factor(Size),
+    y = log1p(dafw_num_away),
+    fill = factor(establishment_type)
+  )
+) +
+  geom_boxplot() +
+  facet_wrap(~ establishment_type) +
+  scale_fill_viridis_d(option = "D") +
+  labs(
+    title = "DAFW Days by Size and Establishment Type",
+    x = "Establishment Size",
+    y = "log(DAFW Days + 1)",
+    fill = "Establishment Type"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none"
+  )
+```
+
+**In two to four sentences, explain the most important pattern. Do not make a causal claim unless the study design supports one.**
+
+One important pattern we can see is that there seems to be more days away from work as the company sizes increase (21 and 22 are categorical that are less than 3). Although visually it does not seem strong it have substantial pull. Also, there seem to be different trends across different establishment typs (Each corner is it's own type). 
+
+## Baseline model
+
+**Name and justify one simple starting model.**
+
+```{r}
+# Fit the baseline and display only the output needed below.
+```
+
+**Interpret one important coefficient, contrast, or prediction in context. Include direction, magnitude, units or scale, and uncertainty. Then identify one specific limitation, unexplained pattern, or opportunity for improvement.**
+
+## Where the analysis could go
+
+**Choose two different course-method families from the project instructions. For each, state what you might do and how it could help answer the question. These methods will form the core of the project and may change after feedback.**
+
+1. **Possible direction:** Replace.
+2. **Possible direction:** Replace.
+
+## AI disclosure and sources
+
+**Disclose any AI used for debugging, proofreading, or other help with the proposal. This does not satisfy the required AI extension. Write “No AI used” if applicable. Cite the dataset and any other sources that materially informed the proposal.**
