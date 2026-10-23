@@ -157,8 +157,10 @@ One important pattern we can see is that there seems to be more days away from w
 
 **Choose two different course-method families from the project instructions. For each, state what you might do and how it could help answer the question. These methods will form the core of the project and may change after feedback.**
 
-1. **Possible direction:** Replace.
-2. **Possible direction:** Replace.
+1. Model Structure: We will fit a multiple linear regression model to predict days away from work using incident type, establishment type, establishment size, state, average number of employees, and total hours worked. Additionally, we will apply a log transformation to our models as it is appropriate.
+
+2. Validation and Comparison: We will use repeated cross validation to determine whether or not our model fits test data appropriately. We will use RMSE and other metrics to determine if a model is the best fit for our data.
+
 
 ## AI disclosure and sources
 
