@@ -1,7 +1,7 @@
 ---
-title: "Replace with a specific project title"
+title: "Days Away From Work"
 subtitle: "STAT 330 Portfolio Project Proposal"
-author: "Replace with all group members' names"
+author: "Emma Messenger, Matthew Davis and Salinda Tanner"
 format:
   html:
     theme: cosmo
@@ -14,9 +14,6 @@ execute:
   message: false
 ---
 
-::: {.callout-tip}
-This proposal is separate from the final case study and does not count toward its word range. Keep the required headings, but add, remove, or move code chunks and output as needed. Delete this note and all bold prompts before submitting.
-:::
 
 **Group members:** Emma Messenger, Matthew Davis, Salinda Tanner
 
@@ -141,12 +138,12 @@ ggplot(
 
 **In two to four sentences, explain the most important pattern. Do not make a causal claim unless the study design supports one.**
 
-One important pattern we can see is that there seems to be more days away from work as the company sizes increase (21 and 22 are categorical that are less than 3). Although visually it does not seem strong it have substantial pull. Also, there seem to be different trends across different establishment typs (Each corner is it's own type). 
+One important pattern we can see is that there seems to be more days away from work as the company sizes increase (21 and 22 are categorical that are less than 3). Although visually it does not seem strong, it has substantial pull. Also, there seem to be different trends across different establishment types (Each corner is it's own type). 
 
 ## Baseline model
 
 **Name and justify one simple starting model.**
-We will use a multiple linear regression model to analyze the relationship between total days awa from work, establishment size, and establishment type. We will be able to determine whether larger establishments report more days away from work in relation to size of company. We selected this model because our primary analysis showed potentail relatioships between both predictors and the response. 
+We will use a multiple linear regression model to analyze the relationship between total days away from work, establishment size, and establishment type. We will be able to determine whether larger establishments report more days away from work in relation to size of company. We selected this model because our primary analysis showed potential relationships between both predictors and the response. 
 
 ```{r}
 baseline_model <- lm(
