@@ -146,12 +146,21 @@ One important pattern we can see is that there seems to be more days away from w
 ## Baseline model
 
 **Name and justify one simple starting model.**
+We will use a multiple linear regression model to analyze the relationship between total days awa from work, establishment size, and establishment type. We will be able to determine whether larger establishments report more days away from work in relation to size of company. We selected this model because our primary analysis showed potentail relatioships between both predictors and the response. 
 
 ```{r}
-# Fit the baseline and display only the output needed below.
+baseline_model <- lm(
+  log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type),
+  data = data
+)
+
+summary(baseline_model)
+confint(baseline_model)
 ```
 
 **Interpret one important coefficient, contrast, or prediction in context. Include direction, magnitude, units or scale, and uncertainty. Then identify one specific limitation, unexplained pattern, or opportunity for improvement.**
+
+Holding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). This corresponds to approximately 49.8% higher predicted (1 + days away) on the transformed scale. The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays. Further analysis could analyze additional predictors or the differences between days away from work and days transferred/restricted. 
 
 ## Where the analysis could go
 
@@ -165,3 +174,4 @@ One important pattern we can see is that there seems to be more days away from w
 ## AI disclosure and sources
 
 **Disclose any AI used for debugging, proofreading, or other help with the proposal. This does not satisfy the required AI extension. Write “No AI used” if applicable. Cite the dataset and any other sources that materially informed the proposal.**
+AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset. 
