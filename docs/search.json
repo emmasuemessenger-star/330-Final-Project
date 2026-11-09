@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workplace Injury Report – Stat 330 Final Project",
+    "section": "",
+    "text": "Workplace Injury Report – Stat 330 Final Project\nEmmma Messenger, Salinda Tanner, Matthew Davis\n\n\nResearch Question\nCan we predict the number of days off from work or reassigned from workplace data?"
+  },
+  {
+    "objectID": "ai_use.html",
+    "href": "ai_use.html",
+    "title": "AI Use",
+    "section": "",
+    "text": "AI Use"
+  },
+  {
+    "objectID": "case_study.html",
+    "href": "case_study.html",
+    "title": "Case Study",
+    "section": "",
+    "text": "Case Study"
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html",
+    "title": "AI Use and Verification",
+    "section": "",
+    "text": "This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#starting-point",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#starting-point",
+    "title": "AI Use and Verification",
+    "section": "Starting point",
+    "text": "Starting point\nAI system and date: Replace.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#substantive-prompts",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#substantive-prompts",
+    "title": "AI Use and Verification",
+    "section": "Substantive prompts",
+    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nReplace with an exact prompt.\n\n\nReplace with another exact prompt, if needed."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#my-decisions",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#my-decisions",
+    "title": "AI Use and Verification",
+    "section": "My decisions",
+    "text": "My decisions\n\nAccepted: What useful advice did you use?\nChanged: What did you adapt to fit your data or goals?\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong?\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#independent-verification",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#independent-verification",
+    "title": "AI Use and Verification",
+    "section": "Independent verification",
+    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\nCheck and result: Replace with a different check and what you learned.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#remaining-limitation",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#remaining-limitation",
+    "title": "AI Use and Verification",
+    "section": "Remaining limitation",
+    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#other-ai-use-if-any",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html#other-ai-use-if-any",
+    "title": "AI Use and Verification",
+    "section": "Other AI use, if any",
+    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use."
+  },
+  {
+    "objectID": "proposal_template_matthew.html",
+    "href": "proposal_template_matthew.html",
+    "title": "Days Away From Work",
+    "section": "",
+    "text": "Group members: Emma Messenger, Matthew Davis, Salinda Tanner"
+  },
+  {
+    "objectID": "proposal_template_matthew.html#question-and-audience",
+    "href": "proposal_template_matthew.html#question-and-audience",
+    "title": "Days Away From Work",
+    "section": "Question and audience",
+    "text": "Question and audience\nState one focused regression question. Identify the intended audience, explain why the answer matters, and name the response and important candidate predictors.\nQuestion:\nHow can we predict an employees Days Away from their job based on an injury?\nAudience:\nThis is important to insurance companies and employers because if we can know how many days an employee is out the employer knows how much insurance to get, and an insurer can know how much to charge (based on Days Away)."
+  },
+  {
+    "objectID": "proposal_template_matthew.html#data",
+    "href": "proposal_template_matthew.html#data",
+    "title": "Days Away From Work",
+    "section": "Data",
+    "text": "Data\nProvide a working source link or citation. Describe the observational unit, dimensions, response, candidate predictors, collection process if known, and evidence that the data can answer your question. Address permission to share or retrieve the data and any privacy, representation, measurement, or ethical concern.\n\n\nShow code\n# Load packages and read the data with a relative path or reproducible step.\n# Show only a compact check of dimensions and variables.\nlibrary(tidyverse)\n\nfiltered_path &lt;- \"ITA_Case_Data_Filter.csv\"\nfull_path &lt;- \"ITA_Case_Detail_Data_2025_through_08-31-2026.csv\"\n\nif (file.exists(full_path)) {\n  # Load original dataset\n  data &lt;- read.csv(full_path)\n\n  # Filter rows and select columns\n  data &lt;- data[\n      (is.na(data$date_of_death) | data$date_of_death == \"\") &\n      data$incident_outcome != 1 &\n      data$dafw_num_away &gt;= 0 &\n      data$djtr_num_tr &gt;= 0,\n    c(\n      \"establishment_ID\",\n      \"state\",\n      \"establishment_type\",\n      \"Size\",\n      \"total_hours_worked\",\n      \"incident_outcome\",\n      \"dafw_num_away\",\n      \"djtr_num_tr\",\n      \"type_of_incident\",\n      \"incident_outcome\"\n    )\n  ]\n\n  # Randomly sample 60% of rows\n  set.seed(123)\n\n  data &lt;- data[\n    sample(nrow(data), size = floor(nrow(data) * 0.60)),\n  ]\n\n  # Save filtered dataset\n  write.csv(data, filtered_path, row.names = FALSE)\n\n} else {\n  # Load previously filtered data\n  data &lt;- read.csv(filtered_path)\n}\n\nglimpse(data)\n\n\nRows: 466,996\nColumns: 10\n$ establishment_ID   &lt;int&gt; 1062686, 1035823, 74483, 1394964, 1116572, 1473696,…\n$ state              &lt;chr&gt; \"CA\", \"VA\", \"VA\", \"FL\", \"NJ\", \"OH\", \"TX\", \"AZ\", \"CA…\n$ establishment_type &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ Size               &lt;int&gt; 3, 22, 3, 3, 3, 3, 3, 22, 3, 3, 22, 21, 22, 3, 22, …\n$ total_hours_worked &lt;dbl&gt; 474946, 310226, 2836971, 682445, 28828331, 6349294,…\n$ incident_outcome   &lt;int&gt; 2, 2, 4, 4, 3, 4, 3, 2, 3, 4, 2, 2, 2, 4, 4, 2, 3, …\n$ dafw_num_away      &lt;int&gt; 158, 56, 0, 0, 0, 0, 0, 20, 0, 0, 28, 123, 1, 0, 0,…\n$ djtr_num_tr        &lt;int&gt; 0, 19, 0, 0, 7, 0, 80, 98, 4, 0, 24, 57, 0, 0, 0, 0…\n$ type_of_incident   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ incident_outcome.1 &lt;int&gt; 2, 2, 4, 4, 3, 4, 3, 2, 3, 4, 2, 2, 2, 4, 4, 2, 3, …\n\n\nData Source:\n\nOccupational Safety and Health Administration. (2026). 2025 case detail summary data [Data set]. U.S. Department of Labor. https://www.osha.gov/sites/default/largefiles/ITA_Case_Detail_Data_2025_through_08-31-2026.csv\n\nThe observational unit is a single company incident. The dimensions of the this data are 509,598 rows and 9 columns. The original dataset had more rows and columns but we filtered it to fit it on Github, and some columns were unnecessary. We also filtered out an negative data because that is an input error (your number of days away, hours worked, etc. should not be less than 0).\nThere are two potential response variables. Either the number of days away from work due to an injury dafw_num_away or the number of days transfered or restricted from work djtr_num_away.\nThe candidate predictors are: - State (state where the company is located) - Establishment Type (State Government, Local Government, or Private) - Size (Categorical) - Average Number of Employees (Numeric) - Total Hours Worked (Total number of hours worked in company)\nI believe this data can answer our question under the assumption that they are correlated.\nThis is public data supplied by the Government. Our biggest ethical concern is how we display the company names, we would not want to poorly represent a company based on their injury reports."
+  },
+  {
+    "objectID": "proposal_template_matthew.html#one-useful-first-look",
+    "href": "proposal_template_matthew.html#one-useful-first-look",
+    "title": "Days Away From Work",
+    "section": "One useful first look",
+    "text": "One useful first look\n\n\nShow code\n# Create one figure that directly informs your research question.\n# Include a useful title, labels, units, and accessible colors.\nlibrary(ggplot2)\nlibrary(viridis)\n\nggplot(\n  data,\n  aes(\n    x = factor(Size),\n    y = log1p(dafw_num_away),\n    fill = factor(establishment_type)\n  )\n) +\n  geom_boxplot() +\n  facet_wrap(~ establishment_type) +\n  scale_fill_viridis_d(option = \"D\") +\n  labs(\n    title = \"DAFW Days by Size and Establishment Type\",\n    x = \"Establishment Size\",\n    y = \"log(DAFW Days + 1)\",\n    fill = \"Establishment Type\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"none\"\n  )\n\n\n\n\n\n\n\n\n\nIn two to four sentences, explain the most important pattern. Do not make a causal claim unless the study design supports one.\nOne important pattern we can see is that there seems to be more days away from work as the company sizes increase (21 and 22 are categorical that are less than 3). Although visually it does not seem strong, it has substantial pull. Also, there seem to be different trends across different establishment types (Each corner is it’s own type)."
+  },
+  {
+    "objectID": "proposal_template_matthew.html#baseline-model",
+    "href": "proposal_template_matthew.html#baseline-model",
+    "title": "Days Away From Work",
+    "section": "Baseline model",
+    "text": "Baseline model\nName and justify one simple starting model. We will use a multiple linear regression model to analyze the relationship between total days away from work, establishment size, and establishment type. We will be able to determine whether larger establishments report more days away from work in relation to size of company. We selected this model because our primary analysis showed potential relationships between both predictors and the response.\n\n\nShow code\nbaseline_model &lt;- lm(\n  log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type),\n  data = data\n)\n\nsummary(baseline_model)\n\n\n\nCall:\nlm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), \n    data = data)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.5207 -0.8604 -0.8604  0.5259  5.2666 \n\nCoefficients:\n                            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)                  1.11622    0.02804  39.811  &lt; 2e-16 ***\nfactor(Size)2               -0.31426    0.03738  -8.407  &lt; 2e-16 ***\nfactor(Size)3               -0.25581    0.02815  -9.089  &lt; 2e-16 ***\nfactor(Size)21              -0.07949    0.03044  -2.612  0.00901 ** \nfactor(Size)22              -0.15756    0.02836  -5.555 2.78e-08 ***\nfactor(establishment_type)2  0.40446    0.01265  31.972  &lt; 2e-16 ***\nfactor(establishment_type)3  0.07551    0.01135   6.652 2.88e-11 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.521 on 466191 degrees of freedom\n  (798 observations deleted due to missingness)\nMultiple R-squared:  0.003475,  Adjusted R-squared:  0.003463 \nF-statistic:   271 on 6 and 466191 DF,  p-value: &lt; 2.2e-16\n\n\nShow code\nconfint(baseline_model)\n\n\n                                  2.5 %      97.5 %\n(Intercept)                  1.06126320  1.17117012\nfactor(Size)2               -0.38752625 -0.24100162\nfactor(Size)3               -0.31097376 -0.20064708\nfactor(Size)21              -0.13915003 -0.01983439\nfactor(Size)22              -0.21314651 -0.10196560\nfactor(establishment_type)2  0.37966784  0.42925685\nfactor(establishment_type)3  0.05326292  0.09775648\n\n\nInterpret one important coefficient, contrast, or prediction in context. Include direction, magnitude, units or scale, and uncertainty. Then identify one specific limitation, unexplained pattern, or opportunity for improvement.\nHolding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). This corresponds to approximately 49.8% higher predicted (1 + days away) on the transformed scale. The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays. Further analysis could analyze additional predictors or the differences between days away from work and days transferred/restricted."
+  },
+  {
+    "objectID": "proposal_template_matthew.html#where-the-analysis-could-go",
+    "href": "proposal_template_matthew.html#where-the-analysis-could-go",
+    "title": "Days Away From Work",
+    "section": "Where the analysis could go",
+    "text": "Where the analysis could go\nChoose two different course-method families from the project instructions. For each, state what you might do and how it could help answer the question. These methods will form the core of the project and may change after feedback.\n\nModel Structure: We will fit a multiple linear regression model to predict days away from work using incident type, establishment type, establishment size, state, average number of employees, and total hours worked. Additionally, we will apply a log transformation to our models as it is appropriate.\nValidation and Comparison: We will use repeated cross validation to determine whether or not our model fits test data appropriately. We will use RMSE and other metrics to determine if a model is the best fit for our data."
+  },
+  {
+    "objectID": "proposal_template_matthew.html#ai-disclosure-and-sources",
+    "href": "proposal_template_matthew.html#ai-disclosure-and-sources",
+    "title": "Days Away From Work",
+    "section": "AI disclosure and sources",
+    "text": "AI disclosure and sources\nDisclose any AI used for debugging, proofreading, or other help with the proposal. This does not satisfy the required AI extension. Write “No AI used” if applicable. Cite the dataset and any other sources that materially informed the proposal. AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html",
+    "title": "Replace with a specific, informative title",
+    "section": "",
+    "text": "Narrative word count: Replace with a number from 750 to 1,000."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#the-question",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#the-question",
+    "title": "Replace with a specific, informative title",
+    "section": "The question",
+    "text": "The question\nIn one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#what-the-baseline-shows",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#what-the-baseline-shows",
+    "title": "Replace with a specific, informative title",
+    "section": "What the baseline shows",
+    "text": "What the baseline shows\nDescribe and justify a simple course-based baseline regression model. Interpret the result that best establishes the rest of the story, including its direction, magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that motivates deeper analysis.\n\n# Load packages and data, document preparation, and fit the baseline.\n\n\n# Show a primary figure or table only if it helps answer the question."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#going-beyond-the-baseline",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#going-beyond-the-baseline",
+    "title": "Replace with a specific, informative title",
+    "section": "Going beyond the baseline",
+    "text": "Going beyond the baseline\nUse two STAT 330 method families. Give each part a descriptive heading that states the question or finding, not an assignment label. Explain why you chose each method, how you checked it, and what it adds to the answer.\n\nReplace with a question or finding\nPresent one method and its most useful evidence.\n\n# Analysis code for this part.\n\n\n\nReplace with another question or finding\nPresent a method from a different family and its most useful evidence. Combine this with the preceding subsection if that creates a clearer story.\n\n# Analysis code for this part."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#a-new-direction-with-ai",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#a-new-direction-with-ai",
+    "title": "Replace with a specific, informative title",
+    "section": "A new direction with AI",
+    "text": "A new direction with AI\nExplain the need revealed by your preliminary course-based work, the extension you implemented with AI support, and what it contributes to the same research question. Show its substantive result on this page and summarize your independent checks. If the extension is an untaught comparator, evaluate it against the core course-based model. Link to the AI-use record instead of placing a transcript here.\n\n# Implement the verified extension or show its most useful result.\n\nDetails are in the AI-use record."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#what-this-means",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#what-this-means",
+    "title": "Replace with a specific, informative title",
+    "section": "What this means",
+    "text": "What this means\nAnswer the research question directly. Distinguish statistical evidence from practical importance, state the most consequential limitations, and suggest one sensible next step. Avoid causal claims unless the study design supports them."
+  },
+  {
+    "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html#data-and-code",
+    "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html#data-and-code",
+    "title": "Replace with a specific, informative title",
+    "section": "Data and code",
+    "text": "Data and code\n\nData: Replace with a working source link or citation and any brief acquisition note needed to reproduce the project.\nRepository: Replace with your repository URL.\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
+  }
+]

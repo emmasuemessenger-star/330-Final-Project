@@ -12,6 +12,8 @@ website:
         href: case_study.qmd
       - text: "AI Use"
         href: ai_use.qmd
+      - text: "Project Proposal"
+        href: proposal_template_matthew.qmd
 
 format:
   html:

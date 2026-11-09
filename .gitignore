@@ -1,3 +1,4 @@
-*.csv
+/.quarto/
+**/*.quarto_ipynb
 
-!ITA_Case_Data_Filter.csv
+*.csv
