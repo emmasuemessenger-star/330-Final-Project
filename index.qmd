@@ -1,0 +1,8 @@
+# Workplace Injury Report – Stat 330 Final Project
+
+### Emmma Messenger, Salinda Tanner, Matthew Davis 
+
+# Research Question
+
+Can we predict the number of days off from work or reassigned from workplace data? 
+
