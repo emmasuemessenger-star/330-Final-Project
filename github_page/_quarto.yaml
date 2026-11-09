@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Workplace Injury Report"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Case Study"
+        href: case_study.qmd
+      - text: "AI Use"
+        href: ai_use.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
