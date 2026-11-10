@@ -1,16 +1,31 @@
 ---
 title: "AI Use and Verification"
 description: "A concise record of AI-supported work on this project."
-author: "Replace with all group members' names"
+author: "Emma Messenger, Matthew Davis, Salinda Tanner"
 ---
 
 This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.
 
 ## Starting point
 
-**AI system and date:** Replace.
+**AI system and date:** ChatGPT 11/09/2026
 
 **Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
+
+How can we predict an employees Days Away from their job based on an injury?
+lm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), 
+    data = data)
+Holding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429).
+The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays.
+
+
+Proposed Extension:
+Our group plans to use ChatGPT to help us analyze our data, verify proper interpretation of our statistical analyses and identify overlooked limitations. We will also use AI tools to check the grammar of our report.
+
+Planned Verification Checks:
+1. Accuracy of Analysis: All statistical analyses will be completed in Positron using R. Any analyses done through AI tools will also be completed in Positron to verify accuracy of numbers and analysis.
+
+2. Human Review: Any interpretations or grammar checked using AI tools will be reviewed by all group members and other statistic professionals as necessary.
 
 ## Substantive prompts
 
@@ -37,8 +52,8 @@ Link or cite verification sources where appropriate. A second AI response does n
 
 ## Remaining limitation
 
-**State one important uncertainty, failure mode, or limitation that remains.**
+The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays.
 
 ## Other AI use, if any
 
-**Briefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.**
+- AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset.
