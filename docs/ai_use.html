@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Emma Messenger, Matthew Davis, Salinda Tanner">
+<meta name="description" content="A concise record of AI-supported work on this project.">
 
-<title>ai_use – Workplace Injury Report</title>
+<title>AI Use and Verification – Workplace Injury Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -106,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./ai_use.html" aria-current="page"> 
 <span class="menu-text">AI Use</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./proposal_template_matthew.html"> 
+<span class="menu-text">Project Proposal</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -122,18 +128,104 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ai-use" id="toc-ai-use" class="nav-link active" data-scroll-target="#ai-use">AI Use</a></li>
+  <li><a href="#starting-point" id="toc-starting-point" class="nav-link active" data-scroll-target="#starting-point">Starting point</a></li>
+  <li><a href="#substantive-prompts" id="toc-substantive-prompts" class="nav-link" data-scroll-target="#substantive-prompts">Substantive prompts</a></li>
+  <li><a href="#my-decisions" id="toc-my-decisions" class="nav-link" data-scroll-target="#my-decisions">My decisions</a></li>
+  <li><a href="#independent-verification" id="toc-independent-verification" class="nav-link" data-scroll-target="#independent-verification">Independent verification</a></li>
+  <li><a href="#remaining-limitation" id="toc-remaining-limitation" class="nav-link" data-scroll-target="#remaining-limitation">Remaining limitation</a></li>
+  <li><a href="#other-ai-use-if-any" id="toc-other-ai-use-if-any" class="nav-link" data-scroll-target="#other-ai-use-if-any">Other AI use, if any</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">AI Use and Verification</h1>
+</div>
+
+<div>
+  <div class="description">
+    A concise record of AI-supported work on this project.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Emma Messenger, Matthew Davis, Salinda Tanner </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
 
 
-<section id="ai-use" class="level1">
-<h1>AI Use</h1>
+</header>
+
+
+<p>This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.</p>
+<section id="starting-point" class="level2">
+<h2 class="anchored" data-anchor-id="starting-point">Starting point</h2>
+<p><strong>AI system and date:</strong> ChatGPT 11/09/2026</p>
+<p><strong>Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.</strong></p>
+<p>How can we predict an employees Days Away from their job based on an injury?</p>
+<pre><code>lm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), 
+    data = data)</code></pre>
+<p>Holding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays.</p>
+</section>
+<section id="substantive-prompts" class="level2">
+<h2 class="anchored" data-anchor-id="substantive-prompts">Substantive prompts</h2>
+<blockquote class="blockquote">
+<p>Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.</p>
+</blockquote>
+<p><strong>Our Prompt:</strong></p>
+<p>We are working on a STAT 330 project looking at whether the size and type of a workplace establishment have a relationship with the number of days employees miss work due to injuries or illnesses.</p>
+<p>Our response variable is dafw_num_away, and our main predictors are establishment size and establishment type. We also plan to look at incident type, state, average number of employees, and total hours worked.</p>
+<p>For our original analysis, we used multiple linear regression with a log transformation on days away from work. Our R-squared was 0.003475, which shows that our model explains very little of the variation in days away from work. One thing we noticed was that establishment type 2 had a higher estimated coefficient than type 1, and there seemed to be different patterns across establishment sizes and types.</p>
+<p>We want to try using a random forest model to see if it can find patterns in our data that our original regression might have missed.</p>
+<p>Can you help us figure out how to create a random forest model in R using our dataset? We would also like to compare it with our original regression model using repeated cross-validation and RMSE. Explain how to interpret the results and suggest a way to show the comparison in our final project. Please don’t make up any results since we want to use our actual data.</p>
+</section>
+<section id="my-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="my-decisions">My decisions</h2>
+<ul>
+<li><strong>Accepted:</strong> Information on forest regressions as well as how to gather the analyses in Positron was helpful.</li>
+<li><strong>Changed:</strong> ChatGPT recommended performing a repeated cross validation on the tree regression model. I believe it would likely complicate our project to perform that before selecting a model. We will perform a repeated cross validation after our model has been selected.</li>
+<li><strong>Rejected or corrected:</strong> Some advice regarding our project was incorrect due to lack of information of what we are including in our project and the data that our project is using.</li>
+</ul>
+<p><strong>Connection to the final case study:</strong> Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.</p>
+<p>We will be able to use this on our final page to get a better analysis and prediction from the tree regression and cross validation.</p>
+</section>
+<section id="independent-verification" class="level2">
+<h2 class="anchored" data-anchor-id="independent-verification">Independent verification</h2>
+<ol type="1">
+<li><strong>Check and result:</strong> Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.</li>
+</ol>
+<ul>
+<li>For our first source we used this <a href="https://docs.nvidia.com/heavyai/heavyml-beta/regression-algorithms/random-forest-regression">site</a> to learn about random forests and see if it would be a good fit for our data and our use case.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Check and result:</strong> Replace with a different check and what you learned.</li>
+</ol>
+<ul>
+<li>Our second source we used was this <a href="https://www.geeksforgeeks.org/machine-learning/random-forest-regression-in-python/">GeeksForGeeks</a> page to again learn more about random forests and tree regressions to see if it would be something that would fit our model.</li>
+</ul>
+<p>Link or cite verification sources where appropriate. A second AI response does not count as independent verification.</p>
+</section>
+<section id="remaining-limitation" class="level2">
+<h2 class="anchored" data-anchor-id="remaining-limitation">Remaining limitation</h2>
+</section>
+<section id="other-ai-use-if-any" class="level2">
+<h2 class="anchored" data-anchor-id="other-ai-use-if-any">Other AI use, if any</h2>
+<ul>
+<li>AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset.</li>
+</ul>
 
 
 </section>

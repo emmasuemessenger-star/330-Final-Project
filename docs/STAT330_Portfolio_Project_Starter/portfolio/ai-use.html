@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Replace with all group members’ names">
+<meta name="author" content="Emma Messenger, Matthew Davis, Salinda Tanner">
 <meta name="description" content="A concise record of AI-supported work on this project.">
 
 <title>AI Use and Verification – Workplace Injury Report</title>
@@ -108,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../ai_use.html"> 
 <span class="menu-text">AI Use</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../proposal_template_matthew.html"> 
+<span class="menu-text">Project Proposal</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -153,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Replace with all group members’ names </p>
+             <p>Emma Messenger, Matthew Davis, Salinda Tanner </p>
           </div>
   </div>
     
@@ -169,27 +173,28 @@ ul.task-list li input[type="checkbox"] {
 <p>This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.</p>
 <section id="starting-point" class="level2">
 <h2 class="anchored" data-anchor-id="starting-point">Starting point</h2>
-<p><strong>AI system and date:</strong> Replace.</p>
+<p><strong>AI system and date:</strong> ChatGPT 11/09/2026</p>
 <p><strong>Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.</strong></p>
+<p>How can we predict an employees Days Away from their job based on an injury? lm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), data = data) Holding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays.</p>
 </section>
 <section id="substantive-prompts" class="level2">
 <h2 class="anchored" data-anchor-id="substantive-prompts">Substantive prompts</h2>
 <p>Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.</p>
-<blockquote class="blockquote">
-<p>Replace with an exact prompt.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Replace with another exact prompt, if needed.</p>
-</blockquote>
+<p>We are working on a STAT 330 project looking at whether the size and type of a workplace establishment have a relationship with the number of days employees miss work due to injuries or illnesses.</p>
+<p>Our response variable is dafw_num_away, and our main predictors are establishment size and establishment type. We also plan to look at incident type, state, average number of employees, and total hours worked.</p>
+<p>For our original analysis, we used multiple linear regression with a log transformation on days away from work. Our R-squared was 0.003475, which shows that our model explains very little of the variation in days away from work. One thing we noticed was that establishment type 2 had a higher estimated coefficient than type 1, and there seemed to be different patterns across establishment sizes and types.</p>
+<p>We want to try using a random forest model to see if it can find patterns in our data that our original regression might have missed.</p>
+<p>Can you help us figure out how to create a random forest model in R using our dataset? We would also like to compare it with our original regression model using repeated cross-validation and RMSE. Explain how to interpret the results and suggest a way to show the comparison in our final project. Please don’t make up any results since we want to use our actual data.</p>
 </section>
 <section id="my-decisions" class="level2">
 <h2 class="anchored" data-anchor-id="my-decisions">My decisions</h2>
 <ul>
-<li><strong>Accepted:</strong> What useful advice did you use?</li>
-<li><strong>Changed:</strong> What did you adapt to fit your data or goals?</li>
-<li><strong>Rejected or corrected:</strong> What advice was unsuitable, unnecessary, or wrong?</li>
+<li><strong>Accepted:</strong> Information on forest regressions as well as how to gather the analyses in Positron was helpful.</li>
+<li><strong>Changed:</strong> ChatGPT recommended performing a repeated cross validation on the tree regression model. I believe it would likely complicate our project to perform that before selecting a model. We will perform a repeated cross validation after our model has been selected.</li>
+<li><strong>Rejected or corrected:</strong> Some advice regarding our project was incorrect due to lack of information of what we are including in our project and the data that our project is using.</li>
 </ul>
 <p><strong>Connection to the final case study:</strong> Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.</p>
+<p>We will</p>
 </section>
 <section id="independent-verification" class="level2">
 <h2 class="anchored" data-anchor-id="independent-verification">Independent verification</h2>
@@ -201,11 +206,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="remaining-limitation" class="level2">
 <h2 class="anchored" data-anchor-id="remaining-limitation">Remaining limitation</h2>
-<p><strong>State one important uncertainty, failure mode, or limitation that remains.</strong></p>
 </section>
 <section id="other-ai-use-if-any" class="level2">
 <h2 class="anchored" data-anchor-id="other-ai-use-if-any">Other AI use, if any</h2>
-<p><strong>Briefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.</strong></p>
+<ul>
+<li>AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset.</li>
+</ul>
 
 
 </section>

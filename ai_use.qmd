@@ -1,1 +1,73 @@
-# AI Use
+---
+title: "AI Use and Verification"
+description: "A concise record of AI-supported work on this project."
+author: "Emma Messenger, Matthew Davis, Salinda Tanner"
+---
+
+This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.
+
+## Starting point
+
+**AI system and date:** ChatGPT 11/09/2026
+
+**Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
+
+How can we predict an employees Days Away from their job based on an injury?
+```
+lm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), 
+    data = data)
+```
+Holding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429).
+The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays.
+
+
+
+## Substantive prompts
+
+> Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.
+
+**Our Prompt:**
+
+We are working on a STAT 330 project looking at whether the size and type of a workplace establishment have a relationship with the number of days employees miss work due to injuries or illnesses.
+
+Our response variable is dafw_num_away, and our main predictors are establishment size and establishment type. We also plan to look at incident type, state, average number of employees, and total hours worked.
+
+For our original analysis, we used multiple linear regression with a log transformation on days away from work. Our R-squared was 0.003475, which shows that our model explains very little of the variation in days away from work. One thing we noticed was that establishment type 2 had a higher estimated coefficient than type 1, and there seemed to be different patterns across establishment sizes and types.
+
+We want to try using a random forest model to see if it can find patterns in our data that our original regression might have missed.
+
+Can you help us figure out how to create a random forest model in R using our dataset? We would also like to compare it with our original regression model using repeated cross-validation and RMSE. Explain how to interpret the results and suggest a way to show the comparison in our final project. Please don't make up any results since we want to use our actual data.
+
+
+
+## My decisions
+
+- **Accepted:** Information on forest regressions as well as how to gather the analyses in Positron was helpful.
+- **Changed:** ChatGPT recommended performing a repeated cross validation on the tree regression model. I believe it would likely complicate our project to perform that before selecting a model. We will perform a repeated cross validation after our model has been selected.
+- **Rejected or corrected:** Some advice regarding our project was incorrect due to lack of information of what we are including in our project and the data that our project is using.
+
+**Connection to the final case study:** Identify where the extension's method and result appear on the final page and how they strengthen the course-based analysis.
+
+We will be able to use this on our final page to get a better analysis and prediction from the tree regression and cross validation. 
+
+## Independent verification
+
+1. **Check and result:** Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.
+
+- For our first source we used this [site](https://docs.nvidia.com/heavyai/heavyml-beta/regression-algorithms/random-forest-regression)
+to learn about random forests and see if it would be a good fit for our data and our use case. 
+
+2. **Check and result:** Replace with a different check and what you learned.
+
+- Our second source we used was this [GeeksForGeeks](https://www.geeksforgeeks.org/machine-learning/random-forest-regression-in-python/)
+page to again learn more about random forests and tree regressions to see if it would be something that would fit our model. 
+
+Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
+
+## Remaining limitation
+
+
+
+## Other AI use, if any
+
+- AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset.
