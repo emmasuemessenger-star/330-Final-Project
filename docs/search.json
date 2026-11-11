@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Workplace Injury Report – Stat 330 Final Project",
-    "section": "",
-    "text": "Workplace Injury Report – Stat 330 Final Project\nEmmma Messenger, Salinda Tanner, Matthew Davis\n\n\nResearch Question\nCan we predict the number of days off from work or reassigned from workplace data?"
-  },
-  {
     "objectID": "ai_use.html",
     "href": "ai_use.html",
     "title": "AI Use and Verification",
@@ -14,11 +7,46 @@
     "text": "This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range."
   },
   {
-    "objectID": "case_study.html",
-    "href": "case_study.html",
-    "title": "Case Study",
-    "section": "",
-    "text": "Case Study"
+    "objectID": "ai_use.html#starting-point",
+    "href": "ai_use.html#starting-point",
+    "title": "AI Use and Verification",
+    "section": "Starting point",
+    "text": "Starting point\nAI system and date: ChatGPT 11/09/2026\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\nHow can we predict an employees Days Away from their job based on an injury?\nlm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), \n    data = data)\nHolding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays."
+  },
+  {
+    "objectID": "ai_use.html#substantive-prompts",
+    "href": "ai_use.html#substantive-prompts",
+    "title": "AI Use and Verification",
+    "section": "Substantive prompts",
+    "text": "Substantive prompts\n\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nOur Prompt:\nWe are working on a STAT 330 project looking at whether the size and type of a workplace establishment have a relationship with the number of days employees miss work due to injuries or illnesses.\nOur response variable is dafw_num_away, and our main predictors are establishment size and establishment type. We also plan to look at incident type, state, average number of employees, and total hours worked.\nFor our original analysis, we used multiple linear regression with a log transformation on days away from work. Our R-squared was 0.003475, which shows that our model explains very little of the variation in days away from work. One thing we noticed was that establishment type 2 had a higher estimated coefficient than type 1, and there seemed to be different patterns across establishment sizes and types.\nWe want to try using a random forest model to see if it can find patterns in our data that our original regression might have missed.\nCan you help us figure out how to create a random forest model in R using our dataset? We would also like to compare it with our original regression model using repeated cross-validation and RMSE. Explain how to interpret the results and suggest a way to show the comparison in our final project. Please don’t make up any results since we want to use our actual data."
+  },
+  {
+    "objectID": "ai_use.html#my-decisions",
+    "href": "ai_use.html#my-decisions",
+    "title": "AI Use and Verification",
+    "section": "My decisions",
+    "text": "My decisions\n\nAccepted: Information on forest regressions as well as how to gather the analyses in Positron was helpful.\nChanged: ChatGPT recommended performing a repeated cross validation on the tree regression model. I believe it would likely complicate our project to perform that before selecting a model. We will perform a repeated cross validation after our model has been selected.\nRejected or corrected: Some advice regarding our project was incorrect due to lack of information of what we are including in our project and the data that our project is using.\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.\nWe will be able to use this on our final page to get a better analysis and prediction from the tree regression and cross validation."
+  },
+  {
+    "objectID": "ai_use.html#independent-verification",
+    "href": "ai_use.html#independent-verification",
+    "title": "AI Use and Verification",
+    "section": "Independent verification",
+    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\n\n\nFor our first source we used this site to learn about random forests and see if it would be a good fit for our data and our use case.\n\n\nCheck and result: Replace with a different check and what you learned.\n\n\nOur second source we used was this GeeksForGeeks page to again learn more about random forests and tree regressions to see if it would be something that would fit our model.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+  },
+  {
+    "objectID": "ai_use.html#remaining-limitation",
+    "href": "ai_use.html#remaining-limitation",
+    "title": "AI Use and Verification",
+    "section": "Remaining limitation",
+    "text": "Remaining limitation"
+  },
+  {
+    "objectID": "ai_use.html#other-ai-use-if-any",
+    "href": "ai_use.html#other-ai-use-if-any",
+    "title": "AI Use and Verification",
+    "section": "Other AI use, if any",
+    "text": "Other AI use, if any\n\nAI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset."
   },
   {
     "objectID": "STAT330_Portfolio_Project_Starter/portfolio/ai-use.html",
@@ -119,6 +147,13 @@
     "text": "AI disclosure and sources\nDisclose any AI used for debugging, proofreading, or other help with the proposal. This does not satisfy the required AI extension. Write “No AI used” if applicable. Cite the dataset and any other sources that materially informed the proposal. AI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset."
   },
   {
+    "objectID": "case_study.html",
+    "href": "case_study.html",
+    "title": "Case Study",
+    "section": "",
+    "text": "Case Study"
+  },
+  {
     "objectID": "STAT330_Portfolio_Project_Starter/portfolio/index.html",
     "href": "STAT330_Portfolio_Project_Starter/portfolio/index.html",
     "title": "Replace with a specific, informative title",
@@ -168,45 +203,10 @@
     "text": "Data and code\n\nData: Replace with a working source link or citation and any brief acquisition note needed to reproduce the project.\nRepository: Replace with your repository URL.\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
   },
   {
-    "objectID": "ai_use.html#starting-point",
-    "href": "ai_use.html#starting-point",
-    "title": "AI Use and Verification",
-    "section": "Starting point",
-    "text": "Starting point\nAI system and date: ChatGPT 11/09/2026\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\nHow can we predict an employees Days Away from their job based on an injury?\nlm(formula = log1p(dafw_num_away) ~ factor(Size) + factor(establishment_type), \n    data = data)\nHolding establishment size category constant, establishments classified as type 2 have an estimated 0.404 higher log(1 + days away) than establishments classified as type 1 (95% CI: 0.380 to 0.429). The model explains only approximately 0.35% of the variation in log-transformed days away from work (R² = 0.0035), suggesting that establishment size and type alone are insufficient to explain differences in lost workdays."
-  },
-  {
-    "objectID": "ai_use.html#substantive-prompts",
-    "href": "ai_use.html#substantive-prompts",
-    "title": "AI Use and Verification",
-    "section": "Substantive prompts",
-    "text": "Substantive prompts\n\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nOur Prompt:\nWe are working on a STAT 330 project looking at whether the size and type of a workplace establishment have a relationship with the number of days employees miss work due to injuries or illnesses.\nOur response variable is dafw_num_away, and our main predictors are establishment size and establishment type. We also plan to look at incident type, state, average number of employees, and total hours worked.\nFor our original analysis, we used multiple linear regression with a log transformation on days away from work. Our R-squared was 0.003475, which shows that our model explains very little of the variation in days away from work. One thing we noticed was that establishment type 2 had a higher estimated coefficient than type 1, and there seemed to be different patterns across establishment sizes and types.\nWe want to try using a random forest model to see if it can find patterns in our data that our original regression might have missed.\nCan you help us figure out how to create a random forest model in R using our dataset? We would also like to compare it with our original regression model using repeated cross-validation and RMSE. Explain how to interpret the results and suggest a way to show the comparison in our final project. Please don’t make up any results since we want to use our actual data."
-  },
-  {
-    "objectID": "ai_use.html#my-decisions",
-    "href": "ai_use.html#my-decisions",
-    "title": "AI Use and Verification",
-    "section": "My decisions",
-    "text": "My decisions\n\nAccepted: Information on forest regressions as well as how to gather the analyses in Positron was helpful.\nChanged: ChatGPT recommended performing a repeated cross validation on the tree regression model. I believe it would likely complicate our project to perform that before selecting a model. We will perform a repeated cross validation after our model has been selected.\nRejected or corrected: Some advice regarding our project was incorrect due to lack of information of what we are including in our project and the data that our project is using.\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.\nWe will be able to use this on our final page to get a better analysis and prediction from the tree regression and cross validation."
-  },
-  {
-    "objectID": "ai_use.html#independent-verification",
-    "href": "ai_use.html#independent-verification",
-    "title": "AI Use and Verification",
-    "section": "Independent verification",
-    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\n\n\nFor our first source we used this site to learn about random forests and see if it would be a good fit for our data and our use case.\n\n\nCheck and result: Replace with a different check and what you learned.\n\n\nOur second source we used was this GeeksForGeeks page to again learn more about random forests and tree regressions to see if it would be something that would fit our model.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
-  },
-  {
-    "objectID": "ai_use.html#remaining-limitation",
-    "href": "ai_use.html#remaining-limitation",
-    "title": "AI Use and Verification",
-    "section": "Remaining limitation",
-    "text": "Remaining limitation"
-  },
-  {
-    "objectID": "ai_use.html#other-ai-use-if-any",
-    "href": "ai_use.html#other-ai-use-if-any",
-    "title": "AI Use and Verification",
-    "section": "Other AI use, if any",
-    "text": "Other AI use, if any\n\nAI was used primarily to help our group setup and use GitHub. It was also used to debug our code as we first started working with our very large dataset."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workplace Injury Report – Stat 330 Final Project",
+    "section": "",
+    "text": "Workplace Injury Report – Stat 330 Final Project\nEmmma Messenger, Salinda Tanner, Matthew Davis\n\n\nResearch Question\nCan we predict the number of days off from work or reassigned from workplace data?"
   }
 ]
